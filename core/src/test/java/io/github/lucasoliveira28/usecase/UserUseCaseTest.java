@@ -27,8 +27,8 @@ public class UserUseCaseTest {
     private UserUseCase userUseCase;
 
     @Test
-    @DisplayName("Deve lançar excessão quando o CPF já estiver cadastrado")
-    void deveLancarExcecaoQuandoCpfJaExistir() {
+    @DisplayName("Deve lançar excessão quando o CPF e/ou email já estiver cadastrado")
+    void deveLancarExcecaoQuandoCpfOuEmailJaExistir() {
         User mockUser = new User(UUID.randomUUID(), "Lucas Monteiro", "11481244469", "lucas.monteiro@example.com"
         , "12345", UserType.CLIENT, BigDecimal.valueOf(100));
         when(userRepositoryPort.existsUserByCpf("11481244469")
