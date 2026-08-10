@@ -4,6 +4,7 @@ import io.github.lucasoliveira28.dto.request.TransactionRequestDTO;
 import io.github.lucasoliveira28.dto.response.TransactionResponseDTO;
 import io.github.lucasoliveira28.mapper.TransactionDTOMapper;
 import io.github.lucasoliveira28.port.input.TransactionCommand;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class TransactionController {
     private final TransactionCommand transactionCommand;
 
     @PostMapping("/transaction")
-    public ResponseEntity<TransactionResponseDTO> newTransaction(@RequestBody TransactionRequestDTO transactionRequestDTO) {
+    public ResponseEntity<TransactionResponseDTO> newTransaction(@RequestBody @Valid TransactionRequestDTO transactionRequestDTO) {
         var transaction = transactionCommand.newTransaction(
                 UUID.fromString(transactionRequestDTO.getPayerId()),
                 UUID.fromString(transactionRequestDTO.getPayeeId()),

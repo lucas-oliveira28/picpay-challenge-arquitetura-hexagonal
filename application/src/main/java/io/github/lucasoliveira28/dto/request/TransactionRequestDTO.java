@@ -2,6 +2,7 @@ package io.github.lucasoliveira28.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class TransactionRequestDTO {
     private String payeeId;
 
     @NotNull(message = "O valor não pode ser nulo")
+    @Positive(message = "O valor da transferência deve ser maior que zero")
     @JsonProperty("amount")
     private Double amount;
 
